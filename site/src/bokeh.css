@@ -1,0 +1,94 @@
+.bk-root {
+  font-family: var(--spectrum-global-font-family-base);
+  font-family: myriad-pro-semi-condensed;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  color: var(--spectrum-alias-text-color) !important;
+  background-color: var(--spectrum-alias-background-color-default);
+}
+
+.bk-root .bk-tooltip {
+  background-color: var(--spectrum-alias-background-color-default);
+  font-size: var(--spectrum-global-dimension-static-size-175);
+}
+
+.bk-root .bk-tooltip-row-label {
+  color: var(--spectrum-alias-text-color);
+  font-weight: var(--spectrum-global-font-weight-bold);
+}
+
+.bk-root .bk-tooltip-row-value {
+  color: var(--spectrum-alias-text-color);
+  font-weight: var(--spectrum-global-font-weight-regular);
+}
+
+.bk.card, .bk.accordion {
+  color: var(--spectrum-alias-text-color);
+  background-color: var(--spectrum-alias-background-color-secondary);
+}
+
+.bk.card-header, .bk.accordion-header {
+  color: var(--spectrum-alias-text-color);
+  background-color: #292929 !important;
+  background-color: var(--spectrum-alias-background-color-secondary) !important;
+}
+
+/* DataFrame Widget */
+.bk-root .slick-header-columns {
+  color: var(--spectrum-alias-text-color);
+  font-weight: bold;
+  background: none;
+}
+
+.bk-root .slick-header-column:hover {
+    background: var(--spectrum-alias-background-color-secondary);
+}
+
+.bk-root .slick-row.even {
+  background: none;
+}
+
+.bk-root .slick-row.odd {
+    background: var(--spectrum-alias-background-color-secondary);
+}
+
+.bk-root .slick-cell.selected {
+    background: var(--spectrum-alias-highlight-selected);
+}
+
+/* DataFrame Pane */
+table.panel-df {
+  color: var(--spectrum-alias-text-color);
+}
+
+.panel-df tbody tr:nth-child(odd) {
+    background: var(--spectrum-alias-background-color-tertiary);
+}
+
+.panel-df tr:hover {
+    background: var(--spectrum-alias-highlight-selected-hover) !important;
+    cursor: pointer;
+}
+
+/* Tabs layout */
+.bk-root .bk-tabs-header .bk-tab {
+  color: var(--spectrum-alias-text-color);
+  background: var(--spectrum-alias-background-color-secondary);
+  border: none;
+}
+
+.bk-root .bk-tabs-header .bk-tab:hover {
+  color: var(--spectrum-alias-text-color);
+  background: var(--spectrum-alias-background-color-tertiary);
+}
+
+.bk-root .bk-tabs-header .bk-tab.bk-active {
+  color: var(--spectrum-alias-text-color);
+  background: var(--spectrum-alias-background-color-tertiary);
+  border: none;
+}
+
+.bk.pn-loading:before {
+  background-color: inherit;
+  border-color: inherit;
+}

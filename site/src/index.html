@@ -1,0 +1,620 @@
+<!doctype html>
+<html class="spectrum spectrum--light spectrum--medium">
+    <head>
+        <meta name="color-scheme" content="dark light">
+        <!-- Include global variables first -->
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/vars/dist/spectrum-global.css">
+
+        <!-- Include only the scales your application needs -->
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/vars/dist/spectrum-medium.css">
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/vars/dist/spectrum-large.css">
+
+        <!-- Include only the colorstops your application needs -->
+        <!-- <link rel="stylesheet" href="../node_modules/@spectrum-css/vars/dist/spectrum-lightest.css"> -->
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/vars/dist/spectrum-light.css">
+        <!-- <link rel="stylesheet" href="../node_modules/@spectrum-css/vars/dist/spectrum-dark.css"> -->
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/vars/dist/spectrum-darkest.css">
+
+        <!-- Include index-vars.css for all components you need -->
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/page/dist/index-vars.css">
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/typography/dist/index-vars.css">
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/icon/dist/index-vars.css">
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/button/dist/index-vars.css">
+        <link rel="stylesheet" href="../node_modules/@spectrum-css/link/dist/index-vars.css">
+        <link rel="stylesheet" href="./spectrum-css-grid.css">
+        <link rel="stylesheet" href="https://use.typekit.net/rkc4ciw.css">
+        <!-- test -->
+        <link rel="stylesheet" href="https://use.typekit.net/ush4rsn.css">
+        <link rel="stylesheet" href="./index.css">
+        <link rel="stylesheet" href="./bokeh.css">
+        <script src="https://kit.fontawesome.com/705fdd8ab7.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <sp-top-nav id="nav">
+            <sp-top-nav-item href="#" style="margin-inline-end: auto;">
+                Pollard's Rho
+            </sp-top-nav-item>
+            <sp-top-nav-item>
+                <sp-button variant="secondary" id="theme-toggle" size="s">
+                    <i id="light" class="fas fa-sun"></i>
+                    <i id="dark" class="fas fa-moon"></i>
+                    Theme
+                </sp-button>
+            </sp-top-nav-item>
+        </sp-top-nav>
+        <main class="spectrum-grid" id="content">
+            <div id="heading">
+                <h1 class="spectrum-Heading spectrum-Heading--sizeXXXL spectrum-Heading--light" id="sitehead">
+                    Pollard's Rho
+                </h1>
+                <sp-divider size="l"></sp-divider>
+            </div>
+            <div id="main" class="spectrum-Typography spectrum-Body spectrum-Body--sizeXL">
+                <section class="section spectrum-grid no-figure">
+                    <div class="copy">
+                        <h2 id="org0e8a75e">An Introduction to Bayesian Statistical Thinking</h2>
+                        <p class="step" data-figure="blank">
+                            As you read this, a paradigm shift transforms how we think about data, from esteemed medical
+                            journals to artificial intelligence: the Bayesian revolution. What is Bayesian statistics, and why
+                            am I and others so excited about it? This introduction seeks to answer that.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure id="linear_regression">
+                            <script src="../plots/plot1.js" id="742c74c3-be1a-4991-ac11-526962881578"></script>
+                            <figcaption>
+                                Example: we have some data about penguins, and we want to learn something about what differentiates different species.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2>What is A Bayesian Perspective?</h2>
+                        <p class="step">
+                            Bayesian statistics is a powerful approach to learning from data. Even though non-Bayesian
+                            statistics is still often the default in many areas, I would argue that we are all naturally
+                            Bayesian in how we think. Two things define a Bayesian perspective on the world&rsquo;s information:
+                            <i>uncertainty</i>, and <i>induction</i>. Let&rsquo;s see how it works with an example.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid no-figure">
+                    <div class="copy">
+                        <h2 id="org07a7eeb">Uncertainty and Candor</h2>
+                        <p class="step" data-figure="eisenstein">
+                            Imagine that 1 out of every 1000 people will develop psychic powers. A test exists for future
+                            psychics: if you test a psychic, there&rsquo;s a 99% chance that the test is positive. If you test a
+                            non-psychic, there&rsquo;s a 1% chance that the test misfires and returns a positive result erroneously.
+                            You get a test and it comes back positive. Are you psychic?
+                        </p>
+
+                        <p class="step">
+                            The first place a Bayesian perspective comes into play is in the question itself. We live in a
+                            fundamentally, profoundly, incontrovertibly uncertain world. To make good decisions, we need to be
+                            candid about that uncertainty. We cannot possibly know for sure one way or another whether you&rsquo;re
+                            psychic. We need to be honest about that. In Bayesian statistics, we do this using <i>prior
+                            probability distributions</i>, using the tools of statistics to quantify both our knowledge and our
+                            lack of it.
+                        </p>
+
+                        <p class="step">
+                            Here, that means we assign a prior probability to being psychic. Sans other information, taking the
+                            base rate in the population, one in a thousand, makes sense. So we assign an initial probability
+                            \(P(\text{psychic}) = 0.001\). We&rsquo;re interested in \(P(\text{psychic}\ |\ \text{test positive})\): the
+                            chance that you&rsquo;re psychic given a positive test. \(P(A\ |\ B)\) means "the probability of A if you know that B is
+                            true". It's called conditional probability, and read "P of A given B".
+
+                            <br/> <br/>
+
+                            In Bayesian jargon, we want to update our prior
+                            belief using the data to form a <i>posterior</i> belief. We&rsquo;re still uncertain, but we&rsquo;ve learned
+                            something, and we want to quantify that learning.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid slides">
+                    <div class="visual">
+                        <figure>
+                            <div class="slide">
+                                $$
+
+                                    \definecolor{b}{RGB}{38,139,210}
+                                    \definecolor{r}{RGB}{220,50,47}
+                                    \definecolor{g}{RGB}{133,153,0}
+
+                                \begin{align*}
+                                P(\text{test positive}) &= \text{??}
+                                \end{align*}
+                                $$
+                            </div>
+                            <div class="slide">
+                                $$
+                                \begin{align*}
+                                P(\text{test positive}) &= \color{b} P(\text{positive and psychic}) \\
+                                &+ \color{r} P(\text{positive and not psychic}) \\ \\
+                                &= \color{b} P(\text{true positive}) \times P(\text{psychic}) \\
+                                &+ \color{r} P(\text{false positive}) \times P(\text{not psychic}) \\
+                                \end{align*}
+                                $$
+                            </div>
+                            <div class="slide">
+                                $$
+                                \begin{align*}
+                                P(\text{test positive}) &= \color{b} P(\text{true positive}) \times P(\text{psychic}) \\
+                                &+ \color{r} P(\text{false positive}) \times P(\text{not psychic}) \\
+                                &= \color{b} 0.99 \times 0.001 \\
+                                &+ \color{r} P(\text{false positive}) \times P(\text{not psychic}) \\
+                                \end{align*}
+                                $$
+                            </div>
+                            <div class="slide">
+                                $$
+                                \begin{align*}
+                                P(\text{test positive}) &= \color{b} 0.99 \times 0.001 \\
+                                &+ \color{r} P(\text{false positive}) \times P(\text{not psychic}) \\
+                                &= \color{b} 0.99 \times 0.001 \\
+                                &+ \color{r} 0.01 \times 0.999 \\
+                                \end{align*}
+                                $$
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2 id="orgd98dbcd">Induction</h2>
+                        <p class="step">
+                            Bayesian statistics is naturally <i>inductive</i>: instead of reasoning from cause to effect, we&rsquo;re given
+                            an effect (a positive result), and we want to determine the cause (your possible psychic powers).
+                            I would argue that most reasoning is inductive: much like a detective in a mystery novel, we&rsquo;re
+                            often in a situation where we need to explain the evidence we see before us, as opposed to the
+                            mastermind who plans the crime in the first place.
+                        </p>
+
+                        <p class="step">
+                            So we ask ourselves: how could this positive test result have come about? Luckily for us, there are
+                            only two possible causes: you&rsquo;re psychic, or you&rsquo;re not.
+                        </p>
+
+                        <p class="step">
+                            If you&rsquo;re psychic, we&rsquo;d expect to see that
+                            positive test result 99% of the time. Because you had a 1 in 1000 chance of being psychic in the
+                            first place, we multiply these together and get a 0.099% chance that you are a psychic who tested
+                            positive.
+                        </p>
+
+                        <p class="step">
+                            If you&rsquo;re not psychic, there&rsquo;s a 1% chance you got a false positive. There was a 99.9% chance you
+                            weren&rsquo;t psychic to begin with, so just as before we multiply to get a .999% chance that you got a
+                            false positive.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure>
+                            <div>
+                                $$
+                                \begin{align*}
+                                &P(\text{psychic}\ |\ \text{test positive}) = \frac{\color{b} P(\text{test positive}\ |\ \text{psychic}) P(\text{psychic})}{P(\text{test positive})} \\
+                                &= \frac{\color{b} P(\text{test positive}\ |\ \text{psychic}) P(\text{psychic})}{\color{b} P(\text{test positive}\ |\ \text{psychic}) P(\text{psychic})
+                                + \color{r} P(\text{test positive}\ |\ \text{not psychic}) P(\text{not psychic})} \\
+                                &= \frac{\color{b} 0.99 \times 0.001}{\color{b} 0.99 \times 0.001
+                                + \color{r} 0.01 \times 0.999} \\
+                                &= \frac{11}{122}
+                                \end{align*}
+                                $$
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2>Getting An Answer</h2>
+                        <p class="step" data-figure="penguin">
+                            We know that one of these two possibilities happened. So, in order to find our <i>posterior</i> (i.e., "post" observing
+                            data) belief about your psychic powers, we divide the probability of the data given our
+                            hypothesis, that you&rsquo;re psychic, by the probability that we would see
+                            this data under <i>any</i> hypothesis. We can think of this as making room: we've eliminated
+                            two cases by observing data, so the hypotheses that weren't busted by the data are now more
+                            likely.
+
+                            Doing this math, we get that the posterior probability of you having psychic powers as \(\frac{11}{122} \approx \color{g} 9\%\).
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure>
+                            <div>
+                                $$
+                                \begin{align*}
+                                P(D \land H) = P(D\ |\ H) \times P(H) &= P(H\ |\ D) \times P(D) \\
+                                \color{g} \boxed{P(H\ |\ D) = \frac{P(D\ |\ H) \times P(H)}{P(D)}}
+                                \end{align*}
+                                $$
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2 id="org6876fc1">Bayes&rsquo; Theorem</h2>
+                        <p class="step" data-figure="penguin">
+                            This leads us to
+                            <i>Bayes&rsquo; theorem</i>: a simple way to update our prior belief about a hypothesis given data. Take
+                            a second to try and connect the abstract form to the problem you just worked through. Here, our data D
+                        is testing positive, and our hypothesis H is that you're psychic. \(P(H\ |\ D)\) is what we want. Bayes'
+                        Theorem let's us flip this around: we know \(P(D\ |\ H)\), which is the chance you'd test positive given
+                        that you're psychic (i.e., the true positive rate), so we can apply this method to go in reverse, from
+                        reasoning about effects given causes to reasoning about causes from effects.
+                        </p>
+                    </div>
+                    <div class="margin">
+                        <p>
+                            The proof sketch I show here isn't necessary to follow along: what's important is the intuition from the
+                        above problem.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid slides">
+                    <div class="visual">
+                        <figure>
+                            <div class="slide">
+                                $$
+                                P(H\ |\ D) = \frac{P(D\ |\ H) \times P(H)}{P(D)}
+                                $$
+                            </div>
+                            <div class="slide">
+                                $$
+                                P(H\ |\ D) = \frac{{\color{b} P(D\ |\ H)} \times P(H)}{P(D)}
+                                $$
+                            </div>
+                            <div class="slide">
+                                $$
+                                P(H\ |\ D) = \frac{P(D\ |\ H) \times P(H)}{\color{b} P(D)}
+                                $$
+                            </div>
+                            <div class="slide">
+                                $$
+                                P(H\ |\ D) = \frac{P(D\ |\ H) \times \color{b} P(H)}{P(D)}
+                                $$
+                            </div>
+                            <div class="slide">
+                                $$
+                                P(H\ |\ D) = \frac{0.99 \times \color{b} 0.001}{0.01098}
+                                $$
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2 id="orge6d8106">Intuition</h2>
+                        <p class="step">
+                            Many people, when asked to guess the answer to problems like the above, vastly overestimate the
+                            correct posterior belief: if the test is 99% accurate, surely a positive result should mean more than
+                        a 1 in 10 chance, right? It&rsquo;s important to remember all three parts of Bayes&rsquo; Theorem hold
+                            importance, and even if you never use Bayes' Theorem explicitly it's good to remember these three
+                            parts.
+
+                            Let's take a second to break this equation down and really solidify our understanding:
+                        </p>
+                        <p class="step">
+                            \(\color{b} P(D\ |\ H)\) is sometimes called the <i>likelihood</i>. If our hypothesis explains the data well
+                        (i.e., the data has a high probability when assuming the hypothesis), that should make us believe in the
+                        hypothesis more. If the data is impossible under a given hypothesis, this term becomes 0 and the posterior
+                        probability will also be 0: our hypothesis is busted and disproven.
+                        </p>
+                        <p class="step">
+                            \(\color{b} P(D)\), sometimes called the <i>marginal likelihood</i>, represents the competition
+                            between our hypothesis and all other hypotheses. We can often break it down, as we did above, into \(P(D\ |\ H) P(H) + P(D\ |\ \lnot H) P(\lnot H)\): the chance
+                            we saw that data caused by our hypothesis, and the chance it was caused by something else.
+
+                            <br />
+                            Remember that this bit is the toughest to calculate, and is the reason we need the prevalence of being
+                            a psychic and the false positive rate. This will be important later.
+                        </p>
+                        <p class="step">
+                            \(\color{b} P(H)\) is quite important: it&rsquo;s our prior belief. If something is impossible (\(P(H) = 0\)), it
+                            doesn&rsquo;t really matter how well it explains the data. All else being equal, what we thought was
+                            likely before should continue to be likely.
+                        </p>
+                        <p class="step">
+                            Our intuition often underweights the importance of \(P(H)\). Our sense that a positive test result is
+                            strong evidence is correct! Our posterior probability is more than 90 times the prior.
+                            As they say, however, <i>when you see hoofprints, think horses,
+                            not zebras.</i> Extraordinary claims require extraordinary evidence, and this evidence isn't quite
+                            extraordinary enough.
+                        </p>
+                    </div>
+                    <div class="margin">
+                        <div class="margin-spacer"></div>
+                        <div class="margin-spacer"></div>
+                        <div class="margin-spacer"></div>
+                        <div class="margin-spacer"></div>
+                        <p>
+                            This is generally true for people's intuition in medical diagnosis and elsewhere: our gut is too
+                            easily convinced of unlikely outcomes. It's easy to go on WebMD and come out convinced you have a
+                            one-in-a-million disease that explains your symptoms to a tee, ignoring the difference between "to a
+                            tee" and "a million times more likely than other explanations".
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid no-figure">
+                    <div class="copy">
+                        <h2 id="org13d0e6a">From Two To Infinity</h2>
+                        <p class="step">
+                            From this example, it&rsquo;s hard to see why Bayesian statistics isn&rsquo;t simply the default way of learning
+                            using information: perhaps it&rsquo;s a little tedious, but nothing too crazy. To get a sense of what a
+                            real-world problem might look like, and how the math can get of hand, let&rsquo;s look at a more
+                            complicated scenario.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure>
+                            <iframe title="taste-test" src="http://127.0.0.1:5006/taste_test" width="500px" height="600px"></iframe>
+                            <figcaption>
+                                Here, you can randomly simulate what happens if your friend has a given accuracy. Do
+                                you think it's reasonable that your friend is no
+                                better than random guessing?
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <p class="step">
+                            Let&rsquo;s say your friend says they can tell the difference between Coke and Pepsi, and you think
+                            they&rsquo;re lying. So you set up an experiment: you give them 10 unlabeled cups and ask them to guess,
+                            and they get 8 out of 10 right. They claim victory, you think they got lucky, and the question is:
+                            who&rsquo;s right?
+                        </p>
+
+                        <p class="step">
+                            As last time, in Bayes-land that&rsquo;s not the right question. Instead, we ask: what is our posterior
+                            belief about how well your friend can discriminate? What makes this problem drastically more
+                            challenging than the last one is that there are now an infinite space of hypotheses to pick between:
+                            we could believe that your friend can tell Coke from Pepsi 50% of the time, 0%, 100%, or anywhere
+                            in between.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure>
+                            <script src="../plots/plot2.js" id="dfb3b0b9-4491-4a8a-946f-ea540b131bb1"></script>
+                            <figcaption>
+                                A plot of the uniform probability distribution on \([0, 1]\). Sometimes
+                                a picture is worth a thousand words, and here
+                                it's worth about three.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2 id="org6a23a1a">Starting Off Somewhere</h2>
+                        <p class="step">
+                            We now need a continuous prior probability distribution that represents
+                            our belief about the probability of any one of these hypotheses. We&rsquo;ll take a very simple approach: we&rsquo;ll
+                            start out giving each hypothesis between 0 and 1 equal weight.
+                        </p>
+                    </div>
+                    <div class="margin">
+                        <p>
+                            This is quite the interesting philosophical problem: if you know nothing
+                            about a probability, what prior should you assign to it? There are
+                            various intuitions that give different results, and I encourage you to
+                            do some reflection on it.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure>
+                            <iframe title="binomial" src="http://127.0.0.1:5006/binomial" width="500px" height="550px"></iframe>
+                            <figcaption>
+                                This plot is the binomial distribution for various values of \(n\),
+                                the number of trials, and \(p\), the probability of success. In this
+                                problem, \(n\) is the number of cups, \(p\) is your friend's
+                                accuracy, and the shown values are the probability of getting a
+                                given amount of correct answers.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2>Examining the Evidence</h2>
+                        <p class="step">
+                            How do we use Bayes&rsquo; Theorem now? Well, we need to multiply each of these prior probabilities by the
+                            Bayes factor. To do that, we need to know the probability of observing 8/10 correct given a
+                            particular chance of choosing correctly. This is known as the binomial probability distribution, and
+                            the formula is readily available.
+                        </p>
+
+                        <p class="step">
+                            We then need the probability of getting 8/10 correct in general. This is where the continuous nature
+                            of this problem really comes back to bite us: instead of being a sum over discrete possibilities,
+                            like we had last time, this will have to be an <i>integral</i>: the sum of the probability of the data
+                            under <i>every</i> hypothesis.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure>
+                            <iframe title="beta" src="http://127.0.0.1:5006/beta" width="500px" height="550px"></iframe>
+                            <figcaption>
+                                The beta distribution: you can mess with \(\alpha\) and \(\beta\) to
+                                see what it looks like. Note how the mean of the distribution is \(\frac{\alpha}{\alpha + \beta}\), which makes sense
+                                if you think of the beta distribution as modeling the true proportion. As you increase both parameters, the
+                                distribution becomes narrower, as you become more sure of the underlying proportion.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2 id="org29cb527">Magic</h2>
+                        <p class="step">
+                            How do we calculate this? Well, that&rsquo;s the hard part. I do have a confession to make, however: this
+                            problem has been chosen specifically because it <i>does</i> have a closed-form solution. Our posterior
+                            probability will be a <i>beta distribution</i> with \(\alpha = 9\) and \(\beta = 3\). These values are
+                            simply our observed successes and failures plus one: the ones come from our prior probability
+                            distribution, which can be represented as a beta distribution with \(\alpha = \beta = 1\).
+                        </p>
+
+                        <p class="step">
+                            Unlike last time, our posterior belief is also a continuous distribution, with no easy way of
+                            describing it. Part of the appeal of Bayesian statistics is that it lets us preserve this
+                            uncertainty: if we had to bet on what would happen in the next 10 trials, it would be important to
+                            know how sure we were in our beliefs.
+                        </p>
+
+                        <p class="step">
+                            The expected value of this distribution is 75%: note how this lies between 50%, the expected value
+                            of our prior, and 80%, the hypothesis that best explains the data. The mode, the most likely single
+                            value, is 80%: because all of our priors were equally likely, it makes sense that the model that
+                            best explained the data is the most likely now.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure>
+                            <iframe title="beta-post" src="http://127.0.0.1:5006/posterior" width="710px" height="550px"></iframe>
+                            <figcaption>
+                                What do you think "telling the difference between Coke and Pepsi" should be, accuracy-wise? You can see the
+                                probability for whatever values you choose.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2 id="org7542ad9">Settling our Bets</h2>
+                        <p class="step">
+                            To settle your friend&rsquo;s question, we first have to decide what qualifies as being able to tell the
+                            difference between Coke and Pepsi. That&rsquo;s something I&rsquo;ll leave up to you: by picking which region to
+                            compute the area under, you can come up with different results. Bayesian inference shines when you
+                            want to ask more interesting questions than just what the most likely outcome or expected outcome
+                            is, and hopefully you can see how a data-driven approach like this one can empower decision making
+                            under uncertainty.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid no-figure">
+                    <div class="copy">
+                        <h2 id="org1ccafc3">Why Isn't This More Common?</h2>
+                        <p class="step">
+                            This is lovely, and beta distributions are used constantly whenever proportions come up like this: a
+                            batter&rsquo;s hitting rate, a <i>League of Legends</i> champion win rate, the proportion of defective laptops
+                            made by a factory, and much more can be modeled effectively using Bayesian inference, learning
+                            however much we can without becoming overconfident. As it turns out, loosely speaking, <em>Bayesian reasoning is the optimal way of making decisions with partial information.</em>
+                            <br />
+                            <br />
+                            The math here isn&rsquo;t <i>nice</i>, but it&rsquo;s also quite
+                            tractable. So why is this not more commonplace? Don't we want to make optimal decisions all the time?
+                        </p>
+                    </div>
+                    <div class="margin">
+                        The specific theorem I mean when I refer to the optimality of Bayesian reasoning is a result from Abraham Wald.
+                        See <a href="https://doi.org/10.1214/aoms/1177730345">https://doi.org/10.1214/aoms/1177730345</a> for the proof.
+                    </div>
+                </section>
+                <section class="section spectrum-grid">
+                    <div class="visual">
+                        <figure>
+                            $$
+                            \begin{align*}
+                            \text{Beta} + \text{Binomial} &\Rightarrow \text{Beta} \\
+                            \text{Normal} + \text{Normal} &\Rightarrow \text{Normal}
+                            \end{align*}
+                            $$
+                            <figcaption>
+                                Two of the most common conjugacy relationships. We've just seen how using a binomial to learn about a beta gives us
+                                another beta, and as it turns out using, say, a sensor with normally-distributed errors to learn about something we
+                                have a normal prior on gives us another normal distribution.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="copy">
+                        <h2>The Limits of Formulas</h2>
+                        <p class="step">
+                            Well, we got lucky. To formalize our good fortune, we say that the beta distribution is the
+                            <i>conjugate prior</i> for the binomial distribution. If our evidence comes from a binomial distribution,
+                            and our prior belief was a beta distribution, it will become a different beta distribution (with the
+                            successes added to \(\alpha\) and the failures added to \(\beta\).)
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid no-figure">
+                    <div class="copy">
+                        <p class="step">
+                            But can we really expect the world to be so nice? There are many relatively simple adjustments to
+                            this scenario that already shatter the delicate conjugacy relationship:
+                        </p>
+                        <ul class="org-ul">
+                            <li>Your friend might, very reasonably, protest that assigning any probability at all to the
+                                hypothesis that they can tell Coke from Pepsi with 40% probability, or any probability below 50%,
+                                is a bit absurd. They could always just randomly guess, and it&rsquo;s a little hard to believe that
+                                they are worse than chance without knowing. It&rsquo;s surely not as likely as 50% or 60%. Such
+                                adjustments are most likely no longer a beta distribution and conjugacy is no more.</li>
+                            <li>The binomial distribution requires that each trial is independent and has the same probability of
+                                success. Perhaps your friend knew that the cups were 5 Coke and 5 Pepsi and so could use their
+                                prior guesses to inform their later ones. Perhaps your friend got sick of soda and got worse as
+                                the experiment went on. Either of these relatively anodyne additions breaks conjugacy.</li>
+                        </ul>
+
+                        <p class="step">
+                            Remember how I said we had to compute an integral over every possible hypothesis to get our posterior distribution in this
+                            example? Conjugacy is one way that integral can work out nicely. Without it, however, we're left with what can often be a <i>very</i> ugly
+                            integral in the bottom, and without the safety blanket of conjugacy there's a good chance it's not solvable at all.
+                        </p>
+
+                        <p class="step">
+                            We're left searching for needles in an infinite haystack. For this problem, this wouldn't actually be too bad, because our
+                            output distribution is fairly smooth: if we pick, say, a set of 300 evenly-spaced hypotheses to test, we'll get a very
+                            close approximation to our final answer by just drawing lines between all of the pieces. (That's actually what I did to
+                            plot it above, and you probably didn't notice!)
+
+                            <br /> <br />
+
+                            But what if our search space is "all of the real numbers", or we have 40 parameters to estimate? We may have no idea where
+                            to start searching, and we won't have any way of knowing if we ended up missing the most likely hypotheses.
+                        </p>
+                    </div>
+                </section>
+                <section class="section spectrum-grid no-figure">
+                    <div class="copy">
+                        <h2 id="org668492f">To Be Continued: Computers To the Rescue!</h2>
+                        <p class="step">
+                            That&rsquo;s where Bayesian practice stood for a long time: an elegant way of solving problems with a
+                            small amount of data in some special cases, but not very helpful once you started introducing
+                            real-world complexities. What&rsquo;s changed that and kickstarted this sea change in statistical practice
+                            is the development of <i>Monte Carlo</i> methods: computer-assisted simulations that <i>approximate</i> the posterior
+                            distribution instead of solving for it analytically. These methods can work in an amazing variety of problems, and have
+                            enabled Bayesian statistics to leap from the pages of textbooks into the world around us.
+
+                            <br /> <br />
+
+                            Next time, we'll look at the best starting point for exploring the fascinating world of these Monte Carlo algorithms: the <i>Metropolis-Hastings</i> algorithm. See you then!
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+        <script src="../node_modules/@spectrum-web-components/bundle/elements.js" type="module"></script>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.0.min.js"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.0.min.js"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.0.min.js"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.0.min.js"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.0.min.js"
+                crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/intersection-observer"></script>
+        <script src="https://unpkg.com/scrollama"></script>
+        <script src="./scroll.js"></script>
+
+        <script type="module" src="./index.js"></script>
+
+        <script type="module" src="./spectrum.js"></script>
+    </body>
+</html>

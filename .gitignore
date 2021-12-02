@@ -1,0 +1,7 @@
+.parcel-cache/
+site/node_modules/
+site/dist/
+*.log
+
+.ipynb_checkpoints/
+.vscode/

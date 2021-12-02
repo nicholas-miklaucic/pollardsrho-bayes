@@ -1,0 +1,141 @@
+.spectrum {
+    --spectrum--global-font-family-base: myriad-pro, sofia-pro, canada-type-gibson, navigo, myriad-pro, "Source Sans Pro", sans-serif;
+    --spectrum-alias-body-text-font-family: var(--spectrum--global-font-family-base);
+    --spectrum--global-font-family-serif: minion-pro, serif;
+    --spectrum-alias-body-m-serif-text-font-family: var(--spectrum--global-font-family-serif);
+    --spectrum-alias-serif-text-font-family: var(--spectrum--global-font-family-serif);
+    --spectrum--global-font-family-code: "LFT Etica Mono", monospace;
+    /* --spectrum-alias-heading-text-font-weight-regular: 600; */
+    /* --spectrum-body-xs-text-font-weight: 600; */
+    --section-space: 500px;
+}
+
+/* .section { */
+/*     padding-bottom: var(--section-space); */
+/* } */
+
+body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+.step, .margin-spacer {
+    padding-bottom: var(--section-space);
+}
+
+section:first-child .step {
+    padding-top: 0 !important;
+}
+
+.visual {
+    grid-area: visual;
+    position: sticky;
+    height: 100vh;
+    opacity: 100%;
+    transition-duration: 1s;
+    top: 10vh;
+    display: flex;
+    align-items: top;
+}
+
+.visual figure {
+}
+
+.visual .slide {
+    opacity: 0%;
+    transition-duration: 1s;
+    height: 0;
+}
+
+.visual .slide.active {
+    height: auto;
+    visibility: visible;
+    opacity: 100%;
+}
+
+#nav {
+    position: sticky;
+    top: 0;
+}
+
+
+#heading {
+    grid-area: heading;
+    justify-self: center;
+}
+
+.spectrum--light #dark, .spectrum--lightest #dark {
+    display: none;
+}
+
+.spectrum--dark #light, .spectrum--darkest #light {
+    display: none;
+}
+
+#theme-toggle {
+    margin-top: 6px;
+}
+
+
+#heading div {
+    justify-self: center;
+}
+
+#main {
+    grid-area: main;
+}
+
+.copy {
+    grid-area: copy;
+}
+
+.margin {
+    grid-area: margin;
+}
+
+.section {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "visual"
+        "copy";
+}
+
+@media screen and (min-width: 768px) {
+    .section {
+        grid-template-columns: 5fr 5fr;
+        grid-template-areas:
+            "visual copy"
+            "visual margin";
+    }
+
+    .section.no-figure {
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas:
+            "copy margin";
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .section {
+        grid-template-columns: 4fr 4fr 2fr;
+        grid-template-areas:
+            "visual copy margin";
+    }
+
+    .section.no-figure {
+        grid-template-columns: 6fr 2fr;
+        grid-template-areas:
+            "copy margin";
+    }
+}
+
+#content {
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-areas:
+        ". heading ."
+        ". main .";
+}
+
+iframe {
+    border: 1px var(--spectrum-alias-text-color);
+}

@@ -1,0 +1,24 @@
+{
+  "name": "mcmc",
+  "version": "0.1.0",
+  "description": "Project to explain MCMC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "parcel src/index.html"
+  },
+  "author": "Nicholas Miklaucic",
+  "license": "ISC",
+  "dependencies": {
+    "@spectrum-css/button": "^4.1.1",
+    "@spectrum-css/icon": "^3.0.7",
+    "@spectrum-css/link": "^3.1.8",
+    "@spectrum-css/page": "^3.0.6",
+    "@spectrum-css/typography": "^4.0.3",
+    "@spectrum-css/vars": "^4.1.1",
+    "@spectrum-web-components/bundle": "^0.23.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
+}

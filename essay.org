@@ -1,0 +1,160 @@
+#+TITLE: Essay
+
+* An Introduction to Bayesian Statistical Thinking
+As you read this, a paradigm shift transforms how we think about data, from esteemed medical
+journals to artificial intelligence: the Bayesian revolution. What is Bayesian statistics, and why
+am I and others so excited about it? This introduction seeks to answer that.
+
+Bayesian statistics is a powerful approach to learning from data. Even though non-Bayesian
+statistics is still often the default in many areas, I would argue that we are all naturally
+Bayesian in how we think. Two things define a Bayesian perspective on the world's information:
+/uncertanity/, and /induction/. Let's see how it works with an example.
+* Uncertainty and Candor
+Imagine that 1 out of every 1000 people will develop psychic powers. A test exists for future
+psychics: if you test a psychic, there's a 99% chance that the test is positive. If you test a
+non-psychic, there's a 1% chance that the test misfires and returns a positive result erroneously.
+You get a test and it comes back positive. Are you psychic?
+
+The first place a Bayesian perspective comes into play is in the question itself. We live in a
+fundamentally, profoundly, incontrovertibly uncertain world. To make good decisions, we need to be
+candid about that uncertainty. We cannot possibly know for sure one way or another whether you're
+psychic. We need to be honest about that. In Bayesian statistics, we do this using /prior
+probability distributions/, using the tools of statistics to quantify both our knowledge and our
+lack of it.
+
+Here, that means we assign a prior probability to being psychic. Sans other information, taking the
+base rate in the population, one in a thousand, makes sense. So we assign an initial probability
+$P(\text{psychic}) = 0.001$. We're interested in $P(\text{psychic}\ |\ \text{test positive})$: the
+chance that you're psychic given a positive test. In Bayesian jargon, we want to update our prior
+belief using the data to form a /posterior/ belief. We're still uncertain, but we've learned
+something, and we want to quantify that learning.
+* Induction
+Bayesian statistics is naturally /inductive/: instead of reasoning from cause to effect, we're given
+an effect (a positive result), and we want to determine the cause (your possible psychic powers).
+I would argue that most reasoning is inductive: much like a detective in a mystery novel, we're
+often in a situation where we need to explain the evidence we see before us, as opposed to the
+mastermind who plans the crime in the first place.
+
+So we ask ourselves: how could this positive test result have come about? Luckily for us, there are
+only two possible causes: you're psychic, or you're not. If you're psychic, we'd expect to see that
+positive test result 99% of the time. Because you had a 1 in 1000 chance of being psychic in the
+first place, we multiply these together and get a 0.099% chance that you are a psychic who tested
+positive.
+
+If you're not psychic, there's a 1% chance you got a false positive. There was a 99.9% chance you
+weren't psychic to begin with, so just as before we multiply to get a .999% chance that you got a
+false positive.
+* Bayes' Theorem
+We know that one of these two possibilities happened. So, in order to find our posterior belief
+about your psychic powers, we divide the probability of the data given our hypothesis, that you're
+psychic, by the probability that we would see this data under /any/ hypothesis. This leads us to
+/Bayes' theorem/: a simple way to update our prior belief about a hypothesis given data. Plugging
+the numbers in, we get that our /posterior belief/ is that you have a 1 in 101 chance of being
+psychic. (It may be a bit early for the champagne.)
+* Intuition
+Many people, when asked to guess the answer to problems like the above, vastly overestimate the
+correct posterior belief. It's important to remember all three parts of Bayes' Theorem hold
+importance.
+ - $P(D\ |\ H)$ expresses the idea that, if data is explained very well by our hypothesis (i.e., the
+   probability of that data is high under that hypothesis), and then we observe that data, that
+   ought to strengthen our beliefs.
+ - $P(H)$ is quite important: it's our prior belief. If something is impossible ($P(H) = 0$), it
+   doesn't really matter how well it explains the data. All else being equal, what we thought was
+   likely before should continue to be likely.
+ - $P(D)$ represents the competition between our hypothesis and all other hypotheses. We can often
+   break it down, as we did above, into $P(D\ |\ H) P(H) + P(D\ |\ \lnot H) P(\lnot H)$: the chance
+   we saw that data caused by our hypothesis, and the chance it was caused by something else.
+
+In this example, people often forget that $P(H)$ is very low initially: even though the /Bayes
+factor/ $\frac{P(D\ |\ H)}{P(D)}$, what we multiply the prior by to update it, is decently large (~9.9), it
+doesn't outweigh our initial strong skepticism. As they say: /when you see hoofprints, think horses,
+not zebras./ Extraordinary claims require extraordinary evidence.
+* From Two To Infinity
+From this example, it's hard to see why Bayesian statistics isn't simply the default way of learning
+using information: perhaps it's a little tedious, but nothing too crazy. To get a sense of what a
+real-world problem might look like, and how the math can get of hand, let's look at a more
+complicated scenario.
+
+Let's say your friend says they can tell the difference between Coke and Pepsi, and you think
+they're lying. So you set up an experiment: you give them 10 unlabeled cups and ask them to guess,
+and they get 8 out of 10 right. They claim victory, you think they got lucky, and the question is:
+who's right?
+
+As last time, in Bayes-land that's not the right question. Instead, we ask: what is our posterior
+belief about how well your friend can discriminate? What makes this problem drastically more
+challenging than the last one is that there are now an infinite space of hypotheses to pick between:
+we could believe that your friend can tell Coke from Pepsi 50% of the time, 0%, 100%, or anywhere
+in between.
+* In Comes Beta
+We now need a continuous prior probability distribution that represents our belief about the
+probability of any one of these hypotheses. Choosing a good prior here turns out to be quite the can
+of worms, but we'll take a very simple approach: we'll start out giving each hypothesis between 0
+and 1 equal weight.
+
+How do we use Bayes' Theorem now? Well, we need to multiply each of these prior probabilities by the
+Bayes factor. To do that, we need to know the probability of observing 8/10 correct given a
+particular chance of choosing correctly. This is known as the binomial probability distribution, and
+the formula is readily available.
+
+We then need the probability of getting 8/10 correct in general. This is where the continuous nature
+of this problem really comes back to bite us: instead of being a sum over discrete possibilities,
+like we had last time, this will have to be an /integral/: the sum of the probability of the data
+under /every/ hypothesis.
+* Magic
+How do we calculate this? Well, that's the hard part. I do have a confession to make, however: this
+problem has been chosen specifically because it /does/ have a closed-form solution. Our posterior
+probability will be a /beta distribution/ with $\alpha = 9$ and $\beta = 3$. These values are
+simply our observed successes and failures plus one: the ones come from our prior probability
+distribution, which can be represented as a beta distribution with $\alpha = \Beta = 1$.
+
+Unlike last time, our posterior belief is also a continuous distribution, with no easy way of
+describing it. Part of the appeal of Bayesian statistics is that it lets us preserve this
+uncertainty: if we had to bet on what would happen in the next 10 trials, it would be important to
+know how sure we were in our beliefs.
+
+The expected value of this distribution is 75%: note how this lies between 50%, the expected value
+of our prior, and 80%, the hypothesis that best explains the data. The mode, the most likely single
+value, is 80%: because all of our priors were equally likely, it makes sense that the model that
+best explained the data is the most likely now.
+* Settling our Bets
+To settle your friend's question, we first have to decide what qualifies as being able to tell the
+difference between Coke and Pepsi. That's something I'll leave up to you: by picking which region to
+compute the area under, you can come up with different results. Bayesian inference shines when you
+want to ask more interesting questions than just what the most likely outcome or expected outcome
+is, and hopefully you can see how a data-driven approach like this one can empower decision making
+under uncertainty.
+* The Limits of Symbols
+This is lovely, and beta distributions are used constantly whenever proportions come up like this: a
+batter's hitting rate, a /League of Legends/ champion win rate, the proportion of defective laptops
+made by a factory, and much more can be modeled effectively using Bayesian inference, learning
+however much we can without becoming overconfident. The math here isn't /nice/, but it's also quite
+tractable. So why is this such an issue? Why not use Bayesian stats for everything?
+
+Well, we got lucky. To formalize our good fortune, we say that the beta distribution is the
+/conjugate prior/ for the binomial distribution. If our evidence comes from a binomial distribution,
+and our prior belief was a beta distribution, it will become a different beta distribution (with the
+successes added to $\alpha$ and the failures added to $\beta$.)
+
+But can we really expect the world to be so nice? There are many relatively simple adjustments to
+this scenario that already shatter the delicate conjugacy relationship:
+ - Your friend might, very reasonably, protest that assigning any probability at all to the
+   hypothesis that they can tell Coke from Pepsi with 40% probability, or any probability below 50%,
+   is a bit absurd. They could always just randomly guess, and it's a little hard to believe that
+   they are worse than chance without knowing. It's surely not as likely as 50% or 60%. Such
+   adjustments are most likely no longer a beta distribution and conjugacy is no more.
+ - The binomial distribution requires that each trial is independent and has the same probability of
+   success. Perhaps your friend knew that the cups were 5 Coke and 5 Pepsi and so could use their
+   prior guesses to inform their later ones. Perhaps your friend got sick of soda and got worse as
+   the experiment went on. Either of these relatively anodyne additions breaks conjugacy.
+
+We're left with what can often be a /very/ ugly integral in the bottom, and without the safety
+blanket of conjugacy, where the integral simplifies to a nice closed form, we're left with what is
+often an intractable problem.
+* Computers Can Help
+That's where Bayesian practice stood for a long time: an elegant way of solving problems with a
+small amount of data in some special cases, but not very helpful once you started introducing
+real-world complexities. What's changed that and kickstarted this sea change in statistical practice
+is the development of /Monte Carlo/ methods: computer-assisted simulations that /approximate/ the
+posterior distribution instead of solving for it analytically. Now that we've gotten an
+understanding of Bayes in theory, we're ready to learn about Bayes in practice, and how these Monte
+Carlo methods work. Stay tuned for that!
